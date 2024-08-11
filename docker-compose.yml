@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  project-leaflet:
+    container_name: project-leaflet
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start
+    volumes:
+      - .:/app
+      - /app/node_modules
+    expose:
+      - 3000
+    networks:
+      - leaflet-docker-network
+
+networks:
+  leaflet-docker-network:
+    name: leaflet-docker-network
